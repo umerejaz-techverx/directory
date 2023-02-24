@@ -1,0 +1,20 @@
+{% include 'header.html' %}
+<form method="get" action="{% url 'search' %}">
+    <input type="text" name="query" value="{{  query|default:'search' }}" placeholder="Search...">
+    <br>
+    <input type="radio" name="criteria" value="Last Name" checked {% if criteria == 'Last Name' %}checked{% endif %}> Last Name
+    <input type="radio" name="criteria" value="Subject" {% if criteria == 'Subject' %}checked{% endif %}> Subject
+    <br>
+    <input type="submit" value="Search">
+</form>
+
+    {% if records %}
+        {% for record in records %}
+            <a href="{% url 'record_detail' record.id %}">
+                <div>
+            <p>{{ record.first_name}} {{record.last_name}}</p>
+                    </div>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}

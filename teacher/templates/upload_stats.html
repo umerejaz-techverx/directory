@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% include 'header.html' %}
+</head>
+<body>
+
+{% if stats %}
+    {% for stat in stats %}
+        <div>
+            <p><b>Email:</b> {{ stat.email }}  <b>Total Subjects:</b> {{ stat.total }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+
+</body>
+</html>

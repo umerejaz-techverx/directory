@@ -1,0 +1,11 @@
+{% include 'header.html' %}
+{% if records %}
+    {% for record in records %}
+    <a href="{% url 'record_detail' record.id %}">
+        <div>
+            <p>{{ record.first_name }} {{ record.last_name }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No results found.</p>
+{% endif %}
